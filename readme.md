@@ -13,7 +13,7 @@
  
  ## Installation
  ```sh
- npm install generator-min-node
+ npm install -g generator-min-node
  ```
 
  ## Create a new app
