@@ -4,10 +4,12 @@
 ## What's in the box
 - Minimal NodeJS app transpiled with Babel
   - async/await support
-- Mocha/Chai tests
+- Mocha/Chai/Sinon tests
   - With chai.should
   - With async/await support for tests
   - Babel polyfill pre-imported
+  - Proxyquire for mocking
+- Code coverage with Istanbul
 - eslint configuration from JSStandard 
 - VSCode debugging support
  
