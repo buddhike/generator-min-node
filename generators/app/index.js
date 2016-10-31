@@ -39,6 +39,7 @@ module.exports = yeoman.Base.extend({
     this.copy('_.babelrc', '.babelrc')
     this.copy('_.editorconfig', '.editorconfig')
     this.copy('_.eslintrc', '.eslintrc')
+    this.copy('jsconfig.json', 'jsconfig.json')
     this.copy('_launch.json', '.vscode/launch.json')
     this.copy('_tasks.json', '.vscode/tasks.json')
     this.mkdir('src')
