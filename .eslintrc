@@ -1,0 +1,12 @@
+{
+  "parser": "babel-eslint",
+  "extends": "standard",
+  "rules": {
+    "keyword-spacing": 2
+  },
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  }
+}

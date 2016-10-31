@@ -1,0 +1,7 @@
+node_modules
+dist
+.tmp
+npm-debug.log
+coverage
+typings
+_typings.json
