@@ -1,4 +1,4 @@
-import 'babel-polyfill'
-import chai from 'chai'
+import 'babel-polyfill';
+import chai from 'chai';
 
-chai.should()
+chai.should();

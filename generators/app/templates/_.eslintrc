@@ -2,7 +2,7 @@
   "parser": "babel-eslint",
   "extends": "standard",
   "rules": {
-    "keyword-spacing": 2
+    "semi": [2, "always"]
   },
   "env": {
     "commonjs": true,

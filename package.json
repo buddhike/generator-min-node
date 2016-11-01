@@ -1,6 +1,6 @@
 {
   "name": "generator-min-node",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Minimal template for ES6 + Babel + NodeJS apps",
   "author": {
     "name": "Buddhike de Silva",
@@ -17,7 +17,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "eslint": "eslint src",
+    "eslint": "eslint --fix generators",
     "test": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec -r test/setup.js test/*{,*/}*.js",
     "start": "nodemon --ignore dist/ --ignore node_modules/ --exec 'npm run eslint && npm run test'"
   },
