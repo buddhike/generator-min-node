@@ -1,7 +1,7 @@
 {
   "name": "generator-min-node",
   "version": "1.0.0",
-  "description": "Minimal template for ES6 + Babel + NodeJS apps",
+  "description": "Minimal template for NodeJS v6+ apps",
   "author": {
     "name": "Buddhike de Silva",
     "email": "buddhike.desilva@geeksdiary.com",
