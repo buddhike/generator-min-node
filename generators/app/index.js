@@ -36,7 +36,7 @@ module.exports = yeoman.Base.extend({
 
   writing: function () {
     this.template('package.json.ejs', 'package.json');
-    this.copy('_.babelrc', '.babelrc');
+    this.copy('_.gitignore', '.gitignore');
     this.copy('_.editorconfig', '.editorconfig');
     this.copy('_.eslintrc', '.eslintrc');
     this.copy('jsconfig.json', 'jsconfig.json');
@@ -52,15 +52,8 @@ module.exports = yeoman.Base.extend({
 
   install: function () {
     this.npmInstall([
-      'babel-cli',
-      'babel-eslint',
-      'babel-plugin-transform-async-to-generator',
-      'babel-plugin-transform-class-properties',
-      'babel-preset-es2015',
-      'babel-polyfill',
       'chai',
       'eslint',
-      'eslint-plugin-promise',
       'eslint-plugin-standard',
       'eslint-config-standard',
       'istanbul',

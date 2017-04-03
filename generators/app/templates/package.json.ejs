@@ -6,13 +6,10 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rm -rf out",
-    "build": "npm run clean && babel src/ -d out/ --source-maps",
-    "buildTests": "npm run clean && babel test/ -d out/test --source-maps && babel src/ -d out/src --source-maps",
     "eslint": "eslint --fix src test",
-    "test": "istanbul cover node_modules/.bin/_mocha -- -u exports --compilers js:babel-core/register -R spec -r test/setup.js test/*{,*/}*.js",
-    "watch": "nodemon --ignore out/ --ignore node_modules/ --exec 'npm run eslint && npm run test && npm run build'",<% if (props.isApp) { %>
-    "server": "npm run build && nodemon --ignore node_modules/ --ignore src/ --ignore test/ out/index.js",
+    "test": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec -r test/setup.js test/*{,*/}*.js",
+    "watch": "nodemon --ignore out/ --ignore node_modules/ --exec 'npm run eslint && npm run test' ",<% if (props.isApp) { %>
+    "server": "nodemon --ignore node_modules/ src/index.js",
     "start": "npm run watch & sleep 3000 && npm run server" <% } else { %>
     "start": "npm run watch"
     <% } %>

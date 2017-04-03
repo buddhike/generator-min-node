@@ -25,20 +25,6 @@
         "run",
         "test"
       ]
-    },
-    {
-      "taskName": "build",
-      "args": [
-        "run",
-        "build"
-      ]
-    },
-    {
-      "taskName": "buildTests",
-      "args": [
-        "run",
-        "buildTests"
-      ]
     }
   ]
 }
