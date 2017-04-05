@@ -1,9 +1,9 @@
 'use strict';
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var slug = require('slug');
-var path = require('path');
+let yeoman = require('yeoman-generator');
+let chalk = require('chalk');
+let yosay = require('yosay');
+let slug = require('slug');
+let path = require('path');
 
 module.exports = yeoman.Base.extend({
   ask: function () {
@@ -11,7 +11,7 @@ module.exports = yeoman.Base.extend({
       `${chalk.magenta('Minimal')} ${chalk.green('NodeJS')} ${chalk.yellow('app generator')}!`
     ));
 
-    var prompts = [{
+    let prompts = [{
       type: 'input',
       name: 'name',
       message: 'What\'s the name of the app?',
@@ -54,8 +54,6 @@ module.exports = yeoman.Base.extend({
     this.npmInstall([
       'chai',
       'eslint',
-      'eslint-plugin-standard',
-      'eslint-config-standard',
       'istanbul',
       'mocha',
       'nodemon',
