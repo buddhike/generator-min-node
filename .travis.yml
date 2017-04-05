@@ -5,11 +5,6 @@ node_js:
 env:
   global:
     - COVERAGE=false
-matrix:
-  include:
-    - env: COVERAGE=true
-after_success:
-  - "[ $COVERAGE == false ] || npm run istanbul -- --report text-summary"
 deploy:
   provider: npm
   email: buddhike.desilva@geeksdiary.com
