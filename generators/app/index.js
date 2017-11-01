@@ -42,8 +42,8 @@ module.exports = yeoman.Base.extend({
     this.copy('jsconfig.json', 'jsconfig.json');
     this.copy('_launch.json', '.vscode/launch.json');
     this.copy('_tasks.json', '.vscode/tasks.json');
-    this.mkdir('src');
-    this.mkdir('test');
+    this.mkdirp('src');
+    this.mkdirp('test');
     this.copy('src/index.js', 'src/index.js');
     this.copy('test/index.js', 'test/index.js');
     this.copy('test/setup.js', 'test/setup.js');
