@@ -5,3 +5,4 @@ npm-debug.log
 coverage
 typings
 _typings.json
+.nyc_output

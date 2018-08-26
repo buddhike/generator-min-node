@@ -1,12 +1,11 @@
 'use strict';
-let yeoman = require('yeoman-generator');
+let Generator = require('yeoman-generator');
 let chalk = require('chalk');
 let yosay = require('yosay');
-let slug = require('slug');
 let path = require('path');
 
-module.exports = yeoman.Base.extend({
-  ask: function () {
+module.exports = class extends Generator{
+  async prompting() {
     this.log(yosay(
       `${chalk.magenta('Minimal')} ${chalk.green('NodeJS')} ${chalk.yellow('app generator')}!`
     ));
@@ -15,7 +14,7 @@ module.exports = yeoman.Base.extend({
       type: 'input',
       name: 'name',
       message: 'What\'s the name of the app?',
-      default: slug(path.basename(this.destinationRoot()))
+      default: path.basename(this.destinationRoot())
     }, {
       type: 'confirm',
       name: 'isApp',
@@ -26,31 +25,37 @@ module.exports = yeoman.Base.extend({
       name: 'author',
       message: 'Author?',
       default: ''
+    }, {
+      type: 'confirm',
+      name: 'isExpress',
+      message: 'Install express',
+      default: false
     }];
 
-    return this.prompt(prompts).then(function (props) {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    }.bind(this));
-  },
+    this.answers = await this.prompt(prompts);
+  }
 
-  writing: function () {
-    this.template('package.json.ejs', 'package.json');
-    this.copy('_.gitignore', '.gitignore');
-    this.copy('_.editorconfig', '.editorconfig');
-    this.copy('_.eslintrc', '.eslintrc');
-    this.copy('jsconfig.json', 'jsconfig.json');
-    this.copy('_launch.json', '.vscode/launch.json');
-    this.copy('_tasks.json', '.vscode/tasks.json');
-    this.mkdirp('src');
-    this.mkdirp('test');
-    this.copy('src/index.js', 'src/index.js');
-    this.copy('test/index.js', 'test/index.js');
-    this.copy('test/setup.js', 'test/setup.js');
-    this.copy('test/.eslintrc', 'test/.eslintrc');
-  },
+  writing() {
+    this.fs.copyTpl(this.templatePath('package.json.ejs'), this.destinationPath('package.json'), {
+      props: {
+        name: this.appname,
+        author: this.answers.author,
+        isApp: this.answers.isApp,
+        isExpress: this.answers.isExpress
+      }
+    });
+    this.fs.copyTpl(this.templatePath('_.gitignore'), this.destinationPath('.gitignore'));
+    this.fs.copyTpl(this.templatePath('_.editorconfig'), this.destinationPath('.editorconfig'));
+    this.fs.copyTpl(this.templatePath('_.eslintrc'), this.destinationPath('.eslintrc'));
+    this.fs.copyTpl(this.templatePath('jsconfig.json'), this.destinationPath('jsconfig.json'));
+    this.fs.copyTpl(this.templatePath('_launch.json'), this.destinationPath('.vscode/launch.json'));
+    this.fs.copyTpl(this.templatePath('_tasks.json'), this.destinationPath('.vscode/tasks.json'));
+    this.fs.copyTpl(this.templatePath('src/index.js'), this.destinationPath('src/index.js'));
+    this.fs.copyTpl(this.templatePath('test/index.js'), this.destinationPath('test/index.js'));
+    this.fs.copyTpl(this.templatePath('test/.eslintrc'), this.destinationPath('test/.eslintrc'));
+  }
 
-  install: function () {
+  install() {
     this.npmInstall([
       'chai',
       'eslint',
@@ -63,7 +68,7 @@ module.exports = yeoman.Base.extend({
       'save-dev': true
     });
 
-    if (this.props.isExpress) {
+    if (this.answers.isExpress) {
       this.npmInstall([
         'express',
         'cookie-parser',
@@ -71,4 +76,4 @@ module.exports = yeoman.Base.extend({
       ], { save: true });
     }
   }
-});
+};
