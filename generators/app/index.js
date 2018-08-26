@@ -54,7 +54,7 @@ module.exports = yeoman.Base.extend({
     this.npmInstall([
       'chai',
       'eslint',
-      'istanbul',
+      'nyc',
       'mocha',
       'nodemon',
       'proxyquire',
